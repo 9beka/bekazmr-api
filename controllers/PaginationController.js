@@ -10,7 +10,7 @@ export const getDataController = async (req, res) => {
     const query = {};
 console.log(searchQuery , "and ", query);
     if (searchQuery) {
-      query.name = { $regex: searchQuery, $options: "i" };
+      query.name = { $regex: searchQuery, $options: "i"};
     }
 
     if (category) {

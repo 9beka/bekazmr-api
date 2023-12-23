@@ -7,6 +7,6 @@ const FakeshopSchema = new Schema({
   description: { type: String, required: false },
   category: { type: String, required: true },
   image: { type: String, required: true },
-});
+},{ timestamps: true });
 
 export default model("FakeShop", FakeshopSchema);

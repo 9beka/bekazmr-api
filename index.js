@@ -8,10 +8,9 @@ import crmRoutes from "./routes/crmRoutes.js";
 dotenv.config();
 const app = express();
 const corsOptions = {
-  origin: process.env.FRONTEND_HOST,
+  origin: process.env.FRONTEND_URL,
   optionsSuccessStatus: 200,
 };
-
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
@@ -19,7 +18,8 @@ app.use("/authRoutes", authRoutes);
 app.use("/crmRoutes", crmRoutes);
 const port = process.env.PORT || 5058;
 
-// app.get("/save-products",) example for get data FROM fakeshopAPI : localhost.../crmRoutes/save-products
+// app.get("/save-products",) 
+// example for get data FROM fakeshopAPI : localhost.../crmRoutes/save-products
 
 mongoose
   .connect(process.env.DATABASE_URL)

@@ -1,7 +1,8 @@
 import FakeShop from "../../models/fakeProducts.js";
 
 export const newProduct = async (req, res) => {
-  const { title, price, category, id } = req.body;
+  try {
+    const { title, price, category, id } = req.body;
   console.log(title, price, category, id);
   let updateData = {};
 
@@ -22,19 +23,18 @@ export const newProduct = async (req, res) => {
     category: updateData.category,
     image: updateData.image,
   });
-  const sortedItems = await FakeShop.find({}).sort("-createdAt");
-  try {
-    await FakeShop.updateMany(
-      { createdAt: { $exists: false } },
-      { $set: { createdAt: new Date() } }
-    );
+
+  const sortedItems = await FakeShop.find({});
+  
     res.status(201).send({
       sortedItems,
       message: "ITEM ADDED",
     });
-
     console.log(newItem, "From MongoDB");
   } catch (error) {
     res.status(400).send({ message: error.message });
+
   }
+  
+
 };
