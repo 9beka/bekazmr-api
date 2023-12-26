@@ -7,12 +7,14 @@ import { getFakeshop } from "../controllers/crm/getFakeshopController.js";
 import { fakeshopDetailController } from "../controllers/crm/fakeshopDetailController.js";
 import { editProductController } from "../controllers/crm/editProductController.js";
 import { deleteProductController } from "../controllers/crm/deleteProductController.js";
+import {PaginationController} from "../controllers/crm/PaginationController.js"
 const router = express.Router();
 router.post("/post/new-product" ,upload.single("image"),newProduct )
 router.patch("/items/:id" ,upload.single("image"),productChange )
 router.patch("/edit/:id" ,upload.single("image"), editProductController)
 router.get("/save-products" , saveProductsCotroller) /// для получение из FAKESHOP API и добавления в БД 
 router.get("/get-fakeshop" ,getFakeshop)
+router.get("/get-fakeshop/pagination" ,PaginationController)
 router.get("/fakeshop/detail/:id" ,fakeshopDetailController)
 router.delete("/fakeshop/:id" , deleteProductController)
 export default router;

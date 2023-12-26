@@ -1,8 +1,8 @@
-import FakeShop from "../models/fakeProducts.js"
-export const getDataController = async (req, res) => {
+import FakeShop from "../../models/fakeProducts.js"
+export const PaginationController = async (req, res) => {
   // ?page=1
   const page = parseInt(req.query.page) || 1;
-  const pageSize = req.query.pageSize || 8;
+  const pageSize = req.query.pageSize || 4;
   const searchQuery = req.query.search || "";
   const category = req.query.category || "";
 
@@ -19,7 +19,8 @@ console.log(searchQuery , "and ", query);
 
     const total = await FakeShop.countDocuments(query);
     const pages = Math.ceil(total / pageSize);
-    const products = await FakeShop.find(query)
+    const products = await  FakeShop.find({}).sort("-createdAt") .skip((page - 1) * pageSize)
+    .limit(pageSize)||FakeShop.find(query)
       .skip((page - 1) * pageSize)
       .limit(pageSize);
 

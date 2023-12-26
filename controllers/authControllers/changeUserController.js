@@ -8,9 +8,10 @@ export const changeUserController = async (req, res) => {
   if (email) updateData.email = email;
   if (password) updateData.password = password;
 
-  if (req.file.location) {
+  if (req.file && req.file.location) {
     const img = `${req.file.location}`;
-    updateData.image = img;
+    updateData.image = img; 
+    
   }
 
   try {

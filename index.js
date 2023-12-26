@@ -4,11 +4,11 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoutes from "./routes/authRoutes.js";
 import crmRoutes from "./routes/crmRoutes.js";
-
+import generatorRoutes from "./routes/generatorRoutes.js"
 dotenv.config();
 const app = express();
 const corsOptions = {
-  origin: process.env.FRONTEND_URL,
+  origin: process.env.FRONTEND_HOST_DEPLOY,
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
@@ -16,6 +16,7 @@ app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 app.use("/authRoutes", authRoutes);
 app.use("/crmRoutes", crmRoutes);
+app.use("/generatorRoutes", generatorRoutes);
 const port = process.env.PORT || 5058;
 
 // app.get("/save-products",) 
