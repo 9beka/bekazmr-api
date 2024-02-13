@@ -17,7 +17,7 @@ app.use("/uploads", express.static("uploads"));
 app.use("/authRoutes", authRoutes);
 app.use("/crmRoutes", crmRoutes);
 app.use("/generatorRoutes", generatorRoutes);
-const port = process.env.PORT || 5058;
+const port = process.env.BACKEND_HOST || 5058;
 
 // app.get("/save-products",) 
 // example for get data FROM fakeshopAPI : localhost.../crmRoutes/save-products
