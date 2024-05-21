@@ -11,7 +11,7 @@ export const verifyEmailController = async (req, res) => {
     );
     if (!user) return res.status(404).send({ message: "User not found" });
     // res.status(200).send({ message: "verify success" })
-    return res.redirect(process.env.FRONTEND_HOST_DEPLOY);
+    return res.redirect(process.env.FRONTEND_URL);
   } catch (error) {
     console.error(error);
     res

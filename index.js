@@ -8,7 +8,7 @@ import generatorRoutes from "./routes/generatorRoutes.js"
 dotenv.config();
 const app = express();
 const corsOptions = {
-  origin: process.env.FRONTEND_HOST_DEPLOY,
+  origin: process.env.FRONTEND_URL,
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));

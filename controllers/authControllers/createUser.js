@@ -39,7 +39,7 @@ export const createUserFcn = async (req, res) => {
       { email: newUser.email, userId: newUser._id },
       process.env.JWT_SECRET
     );
-    const verificationLink = `${process.env.BACKEND_HOST}/authRoutes/verify-email/${token}`;
+    const verificationLink = `http://localhost:5058/authRoutes/verify-email/${token}`;
     const mailOptions = {
       from: process.env.MAILRU_EMAIL,
       to: email,
